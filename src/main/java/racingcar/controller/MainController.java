@@ -8,7 +8,6 @@ import racingcar.view.OutputView;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 public class MainController {
     private static final int UPPER_BOUND = 10;
@@ -32,9 +31,11 @@ public class MainController {
         String inputCarNames = InputView.inputCarNames();
         List<String> carNames = CarNameConverter.convertToCarNames(inputCarNames);
 
-        return carNames.stream()
+        List<Car> cars = carNames.stream()
                 .map(Car::new)
-                .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::new));
+                .toList();
+
+        return new Cars(cars);
     }
 
     private Round initializeRound() {
