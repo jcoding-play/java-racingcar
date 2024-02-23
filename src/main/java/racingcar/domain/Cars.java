@@ -17,7 +17,7 @@ public class Cars {
     }
 
     private void validateCars(List<Car> cars) {
-        if (cars.size() < MINIMUM_CARS_SIZE) {
+        if (cars.isEmpty()) {
             throw new IllegalArgumentException(
                     String.format("게임에 참여하는 자동차의 수는 최소 %d대 이상이어야 합니다.", MINIMUM_CARS_SIZE));
         }
