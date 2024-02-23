@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -41,13 +42,16 @@ public class Cars {
         cars.sort(Comparator.reverseOrder());
         Car maxPositionCar = cars.get(MAXIMUM_POSITION_CAR_INDEX);
 
-        return findCarsBy(maxPositionCar);
-    }
-
-    private List<Car> findCarsBy(Car standardCar) {
-        return cars.stream()
-                .filter(car -> car.isSamePosition(standardCar))
-                .toList();
+        List<Car> carsAtMaxPosition = new ArrayList<>();
+        for (int i = 0; i < cars.size(); i++) {
+            Car car = cars.get(i);
+            if (car.isSamePosition(maxPositionCar)) {
+                carsAtMaxPosition.add(car);
+                continue;
+            }
+            break;
+        }
+        return carsAtMaxPosition;
     }
 
     public List<Car> getCars() {
