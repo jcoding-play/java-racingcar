@@ -53,4 +53,20 @@ class CarsTest {
 
         assertThat(carsAtMaxPosition).containsExactly(pobi, honux);
     }
+
+    @Test
+    @DisplayName("자동차들을 위치 값을 통해 정렬할 수 있다.")
+    void sortCars() {
+        Car firstCar = new Car("1", 6);
+        Car secondCar = new Car("2", 1);
+        Car thirdCar = new Car("3", 4);
+        Car fourthCar = new Car("4", 2);
+        Car fifthCar = new Car("5", 3);
+        Car sixthCar = new Car("6", 8);
+        cars = new Cars(Arrays.asList(firstCar, secondCar, thirdCar, fourthCar, fifthCar, sixthCar));
+
+        cars.sortCars();
+
+        assertThat(cars.getCars()).containsExactly(sixthCar, firstCar, thirdCar, fifthCar, fourthCar, secondCar);
+    }
 }
