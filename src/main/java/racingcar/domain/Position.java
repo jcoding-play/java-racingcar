@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class Position implements Comparable<Position> {
+public class Position {
     private int position;
 
     public Position(int position) {
@@ -17,10 +17,5 @@ public class Position implements Comparable<Position> {
 
     public int getPosition() {
         return position;
-    }
-
-    @Override
-    public int compareTo(Position other) {
-        return position - other.position;
     }
 }

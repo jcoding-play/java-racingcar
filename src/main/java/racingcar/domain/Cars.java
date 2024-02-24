@@ -39,8 +39,7 @@ public class Cars {
     }
 
     public List<Car> findCarsAtMaxPosition() {
-        cars.sort(Comparator.reverseOrder());
-        Car maxPositionCar = cars.get(MAXIMUM_POSITION_CAR_INDEX);
+        Car maxPositionCar = findMaxPositionCar();
 
         List<Car> carsAtMaxPosition = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
@@ -52,6 +51,13 @@ public class Cars {
             break;
         }
         return carsAtMaxPosition;
+    }
+
+    private Car findMaxPositionCar() {
+        Comparator<Car> carComparator = (firstCar, secondCar) -> secondCar.getPosition() - firstCar.getPosition();
+        cars.sort(carComparator);
+
+        return cars.get(MAXIMUM_POSITION_CAR_INDEX);
     }
 
     public List<Car> getCars() {
